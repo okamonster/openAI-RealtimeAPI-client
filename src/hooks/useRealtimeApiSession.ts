@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 
-export const useRealtimeApiSession = () => {
+export const useRealtimeApiSession = (): {
+	startSession: () => Promise<void>;
+	endSession: () => void;
+} => {
 	const [dataChannel, setDataChannel] = useState<RTCDataChannel | null>(null);
 	const audioElementRef = useRef<HTMLAudioElement>(null);
 	const peerConnectionRef = useRef<RTCPeerConnection | null>(null);
